@@ -77,10 +77,18 @@ const LandingPage = () => {
           </svg>
         </div>
         <div className="hidden md:block">
-          <button className="p-4">Showcase</button>
-          <button className="p-4">Comic Book</button>
-          <button className="p-4">Roadmap</button>
-          <button className="p-4">FAQs</button>
+          <a href="#showcase" className="p-4">
+            Showcase
+          </a>
+          <a href="#comic" className="p-4">
+            Comic Book
+          </a>
+          <a href="#roadmap" className="p-4">
+            Roadmap
+          </a>
+          <a href="#faqs" className="p-4">
+            FAQs
+          </a>
         </div>
       </nav>
 
@@ -108,7 +116,7 @@ const LandingPage = () => {
 
       {/* Show Case */}
 
-      <section className="flex flex-col items-center mt-32">
+      <section id="showcase" className="flex flex-col items-center mt-32">
         <div className="p-4 card-bg primary-font">Show Case</div>
 
         {/* Show Case Slider */}
@@ -143,7 +151,7 @@ const LandingPage = () => {
 
       {/* Zombie */}
 
-      <section className="w-full flex justify-center mt-32">
+      <section id="zombie" className="w-full flex justify-center mt-32">
         <div className="flex w-3/4 items-center">
           <div className="flex flex-col items-start w-1/2">
             <div className="p-4 m-4 card-bg primary-font">ZOMBIE – Phase 2</div>
@@ -180,7 +188,7 @@ const LandingPage = () => {
 
       {/* Comic Book */}
 
-      <section className="w-full flex justify-center mt-32">
+      <section id="comic" className="w-full flex justify-center mt-32">
         <div className="flex w-3/4 items-center">
           <img src={spud1} className="m-4 w-1/2" alt="logo"></img>
           <div className="flex flex-col items-start">
@@ -199,9 +207,9 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Concert */}
+      {/* COMMUNITY ENGAGEMENT */}
 
-      <section className="w-full flex justify-center mt-32">
+      <section id="community" className="w-full flex justify-center mt-32">
         <div className="flex w-3/4 items-center">
           <div className="flex flex-col items-start">
             <div className="p-4 m-4 card-bg primary-font">
@@ -231,7 +239,7 @@ const LandingPage = () => {
 
       {/* Roadmap */}
 
-      <section className="flex flex-col items-center mt-32">
+      <section id="roadmap" className="flex flex-col items-center mt-32">
         <div className="p-4 card-bg primary-font">Roadmap</div>
 
         <img src={roadmapImage} className="w-3/4 m-4" alt="logo"></img>
@@ -239,13 +247,13 @@ const LandingPage = () => {
 
       {/* Countdown */}
 
-      <section className="flex flex-col items-center mt-32">
+      <section id="countdown" className="flex flex-col items-center mt-32">
         <div className="p-4 card-bg primary-font">Countdown</div>
       </section>
 
       {/* FAQs */}
 
-      <section className="flex flex-col items-center mt-32">
+      <section id="faqs" className="flex flex-col items-center mt-32">
         <div className="p-4 card-bg primary-font mb-8">Frequent Questions</div>
 
         <div className="flex justify-center w-full">
