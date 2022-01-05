@@ -23,6 +23,7 @@ import twitter from "../assets/twitter.png";
 import discord from "../assets/discord.png";
 import zombieHand from "../assets/zombie-hand.png";
 import nftLogo from "../assets/nft-logo.png";
+import dropdown from "../assets/dropdown.png";
 
 const ConnectButton = styled(WalletDialogButton)``;
 
@@ -249,29 +250,37 @@ const LandingPage = () => {
 
         <div className="flex justify-center w-full">
           <div className="flex flex-wrap text-center w-3/4 justify-center">
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-2 m-2 w-2/5">
-              Lorem ipsum dolor sit amet.
+            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
+              <img src={dropdown}></img>
             </div>
           </div>
         </div>
