@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
@@ -28,37 +28,53 @@ import dropdown from "../assets/dropdown.png";
 const ConnectButton = styled(WalletDialogButton)``;
 
 const LandingPage = () => {
+  // const navContainer = useRef(null);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      // console.log(window.pageYOffset);
+    };
+  }, []);
+
   return (
     <>
       {/* 
       TODO List:
-        - Add js functionality to NAV
-        - Make NAV fixed
-        - Make NAV mobile friendly
-        - Fix styling on buttons
         - Convert everything to mobile friendly
-        - Fix mint now button
+        - Do something about roadmap
+        NAV:
+          - Add js functionality to NAV
+          - Make NAV mobile friendly
+
+        - Fix styling on buttons
         - Fix showcase slider
+
+        - Fix mint now button
+
+        Blocking:
         - Insert correct zombie gif
         - Comic book video
-        - Do something about roadmap
         - Replace logo with the spuds logo
+        - Insert real FAQs
       */}
 
       {/* Navbar */}
 
       <nav
+        // ref={navContainer}
         role="navigation"
-        className="flex justify-center items-center m-4 h-16 text-white primary-font"
+        className="w-full flex justify-center items-center bg-indigo-900 text-white primary-font fixed top-0"
       >
         <div className="flex items-center mr-32">
           <img
             src="https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables-25/85/potatoes_potato_vegetable_food-256.png"
             width="50"
-            className="m-4"
+            className="mx-4"
             alt="logo"
           ></img>
-          <button className="">LOGO</button>
+          <a href="#" className="">
+            LOGO
+          </a>
         </div>
 
         <div className="px-4 cursor-pointer md:hidden">
@@ -95,8 +111,10 @@ const LandingPage = () => {
       {/* Spuds NFT Collection */}
 
       <section className="flex flex-col items-center mt-16">
-        <div className="p-4 card-bg primary-font">Spuds NFT Collection</div>
-        <p className="mt-4 w-3/5 text-center">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          Spuds NFT Collection
+        </div>
+        <p className="mt-4 lg:w-3/5 w-4/5 text-center">
           Join the Spud Club to build the 1st community driven comic book series
           based nfts <br /> Win paid trips to the wonders of the world that are
           at risk due to climate change <br />{" "}
@@ -117,34 +135,36 @@ const LandingPage = () => {
       {/* Show Case */}
 
       <section id="showcase" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg primary-font">Show Case</div>
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          Show Case
+        </div>
 
         {/* Show Case Slider */}
 
-        <div className="w-3/4 flex overflow-x-auto">
+        <div className="lg:w-3/4 w-10/12 flex overflow-x-auto">
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud1} className="p-4" alt="logo"></img>
-            <img src={spud2} className="p-4" alt="logo"></img>
+            <img src={spud1} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud2} className="lg:p-4 p-2" alt="logo"></img>
           </div>
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud3} className="p-4" alt="logo"></img>
-            <img src={spud4} className="p-4" alt="logo"></img>
+            <img src={spud3} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud4} className="lg:p-4 p-2" alt="logo"></img>
           </div>
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud5} className="p-4" alt="logo"></img>
-            <img src={spud6} className="p-4" alt="logo"></img>
+            <img src={spud5} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud6} className="lg:p-4 p-2" alt="logo"></img>
           </div>
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud7} className="p-4" alt="logo"></img>
-            <img src={spud8} className="p-4" alt="logo"></img>
+            <img src={spud7} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud8} className="lg:p-4 p-2" alt="logo"></img>
           </div>
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud9} className="p-4" alt="logo"></img>
-            <img src={spud10} className="p-4" alt="logo"></img>
+            <img src={spud9} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud10} className="lg:p-4 p-2" alt="logo"></img>
           </div>
           <div className="w-1/4 flex flex-col flex-none">
-            <img src={spud11} className="p-4" alt="logo"></img>
-            <img src={spud12} className="p-4" alt="logo"></img>
+            <img src={spud11} className="lg:p-4 p-2" alt="logo"></img>
+            <img src={spud12} className="lg:p-4 p-2" alt="logo"></img>
           </div>
         </div>
       </section>
@@ -152,13 +172,15 @@ const LandingPage = () => {
       {/* Zombie */}
 
       <section id="zombie" className="w-full flex justify-center mt-32">
-        <div className="flex w-3/4 items-center">
-          <div className="flex flex-col items-start w-1/2">
-            <div className="p-4 m-4 card-bg primary-font">ZOMBIE – Phase 2</div>
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
+          <div className="flex flex-col lg:items-start items-center lg:w-1/2 w-10/12">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+              ZOMBIE – Phase 2
+            </div>
 
-            <div className="flex items-start mb-4">
+            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
               <img src={zombieHand} className="h-20 m-4" alt="logo"></img>
-              <div className="flex flex-col">
+              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
                 <h2 className="primary-font">Title</h2>
                 <p>
                   How could it be? Have our little companions have turned
@@ -169,9 +191,9 @@ const LandingPage = () => {
               </div>
             </div>
 
-            <div className="flex items-start mb-4">
+            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
               <img src={nftLogo} className="h-20 m-4" alt="logo"></img>
-              <div className="flex flex-col">
+              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
                 <h2 className="primary-font">Title</h2>
                 <p>
                   Bring the joy and cuteness back to the super spuds by minting.
@@ -182,17 +204,17 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <img src={chairImage} className="m-4 w-1/2" alt="logo"></img>
+          <img src={spud2} className="m-4 lg:w-1/2 w-full" alt="logo"></img>
         </div>
       </section>
 
       {/* Comic Book */}
 
       <section id="comic" className="w-full flex justify-center mt-32">
-        <div className="flex w-3/4 items-center">
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
           <img src={spud1} className="m-4 w-1/2" alt="logo"></img>
-          <div className="flex flex-col items-start">
-            <div className="p-4 m-4 card-bg primary-font">
+          <div className="flex flex-col items-start lg:w-1/2 w-10/12 ">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
               COMIC BOOK SERIES – Phase 3
             </div>
             <p className="m-4">
@@ -210,9 +232,9 @@ const LandingPage = () => {
       {/* COMMUNITY ENGAGEMENT */}
 
       <section id="community" className="w-full flex justify-center mt-32">
-        <div className="flex w-3/4 items-center">
-          <div className="flex flex-col items-start">
-            <div className="p-4 m-4 card-bg primary-font">
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
+          <div className="flex flex-col items-start  w-10/12 lg:text-left text-center lg:items-start items-center">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
               COMMUNITY ENGAGEMENT
             </div>
             <p className="m-4">
@@ -233,60 +255,74 @@ const LandingPage = () => {
               the progress and the overall aim of the community!
             </p>
           </div>
-          <img src={concertImage} className="m-4 w-1/2" alt="logo"></img>
+          <img
+            src={concertImage}
+            className="m-4 lg:w-1/2 w-10/12"
+            alt="logo"
+          ></img>
         </div>
       </section>
 
       {/* Roadmap */}
 
       <section id="roadmap" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg primary-font">Roadmap</div>
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          Roadmap
+        </div>
 
-        <img src={roadmapImage} className="w-3/4 m-4" alt="logo"></img>
+        <img
+          src={roadmapImage}
+          className="lg:w-3/4 w-10/12 m-4"
+          alt="logo"
+        ></img>
       </section>
 
       {/* Countdown */}
 
       <section id="countdown" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg primary-font">Countdown</div>
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          Countdown
+        </div>
       </section>
 
       {/* FAQs */}
 
       <section id="faqs" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg primary-font mb-8">Frequent Questions</div>
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-8">
+          Frequent Questions
+        </div>
 
         <div className="flex justify-center w-full">
-          <div className="flex flex-wrap text-center w-3/4 justify-center">
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+          <div className="flex flex-wrap text-center lg:w-3/4 w-10/12 justify-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
-            <div className="bg-blue-800 p-4 m-2 w-2/5 flex justify-between items-center">
+            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
               <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
               <img src={dropdown}></img>
             </div>
@@ -296,8 +332,8 @@ const LandingPage = () => {
 
       {/* Footer */}
 
-      <div className="flex justify-center items-center mt-32 text-white primary-font">
-        <div className="flex w-1/4 justify-center items-center">
+      <div className="flex lg:flex-row flex-col justify-center items-center mt-32 text-white primary-font">
+        <div className="flex lg:w-1/4 w-2/4 justify-center items-center">
           <img
             src="https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables-25/85/potatoes_potato_vegetable_food-256.png"
             width="50"
@@ -307,12 +343,12 @@ const LandingPage = () => {
           <button>LOGO</button>
         </div>
 
-        <p className="w-1/4 text-center secondary-font">
+        <p className="lg:w-1/4 w-2/4 text-center secondary-font">
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim,
           maxime!
         </p>
 
-        <div className="flex w-1/4 justify-center items-center">
+        <div className="flex lg:w-1/4 w-2/4 justify-center items-center">
           <img src={twitter} width="50" className="m-4" alt="logo"></img>
           <img src={discord} width="50" className="m-4" alt="logo"></img>
         </div>
