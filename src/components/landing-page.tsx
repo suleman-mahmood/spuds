@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
@@ -25,11 +25,82 @@ import zombieHand from "../assets/zombie-hand.png";
 import nftLogo from "../assets/nft-logo.png";
 import dropdown from "../assets/dropdown.png";
 
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+
 const ConnectButton = styled(WalletDialogButton)``;
 
-const LandingPage = () => {
-  // const navContainer = useRef(null);
+const BasicMenu = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
+  return (
+    <>
+      <div className="px-4 cursor-pointer md:hidden">
+        <Button
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
+        >
+          <svg
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </Button>
+      </div>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={handleClose}>
+          <a href="#showcase" className="p-4">
+            Showcase
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <a href="#comic" className="p-4">
+            Comic Book
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <a href="#roadmap" className="p-4">
+            Roadmap
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <a href="#faqs" className="p-4">
+            FAQs
+          </a>
+        </MenuItem>
+      </Menu>
+    </>
+  );
+};
+
+const LandingPage = () => {
   useEffect(() => {
     window.onscroll = () => {
       const element = document.getElementById("nav-container");
@@ -64,10 +135,6 @@ const LandingPage = () => {
 
         - Do something about roadmap
         - Finish Countdown
-        
-        NAV:
-          - Add js functionality to NAV
-          - Make NAV mobile friendly
 
         Blocking:
         - Insert correct zombie gif
@@ -80,12 +147,11 @@ const LandingPage = () => {
       {/* Navbar */}
 
       <nav
-        // ref={navContainer}
         id="nav-container"
         role="navigation"
-        className="w-full flex justify-center items-center bg-indigo-900 text-white primary-font fixed top-0"
+        className="w-full flex md:justify-center justify-around items-center text-white primary-font fixed top-0"
       >
-        <div className="flex items-center mr-32">
+        <div className="flex items-center md:mr-32">
           <img
             src="https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables-25/85/potatoes_potato_vegetable_food-256.png"
             width="50"
@@ -97,7 +163,7 @@ const LandingPage = () => {
           </a>
         </div>
 
-        <div className="px-4 cursor-pointer md:hidden">
+        {/* <div className="px-4 cursor-pointer md:hidden">
           <svg
             className="h-6 w-6"
             fill="none"
@@ -111,7 +177,8 @@ const LandingPage = () => {
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
-        </div>
+        </div> */}
+        <BasicMenu></BasicMenu>
         <div className="hidden md:block">
           <a href="#showcase" className="p-4">
             Showcase
