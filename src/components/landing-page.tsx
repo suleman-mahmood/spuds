@@ -36,26 +36,41 @@ const LandingPage = () => {
     };
   }, []);
 
+  const clickMint = () => {
+    const element = document.getElementById("click-this");
+    const mouseClickEvents = ["mousedown", "click", "mouseup"];
+    mouseClickEvents.forEach((mouseEventType) => {
+      if (element != null) {
+        element.dispatchEvent(
+          new MouseEvent(mouseEventType, {
+            view: window,
+            bubbles: true,
+            cancelable: true,
+            buttons: 1,
+          })
+        );
+      }
+    });
+  };
+
   return (
     <>
       {/* 
       TODO List:
-        - Convert everything to mobile friendly
+
         - Do something about roadmap
+        - Finish Countdown
+        
         NAV:
           - Add js functionality to NAV
           - Make NAV mobile friendly
-
-        - Fix styling on buttons
-        - Fix showcase slider
-
-        - Fix mint now button
 
         Blocking:
         - Insert correct zombie gif
         - Comic book video
         - Replace logo with the spuds logo
         - Insert real FAQs
+        - Button background Image (Fix styling on buttons)
       */}
 
       {/* Navbar */}
@@ -128,7 +143,15 @@ const LandingPage = () => {
           <img src={twitter} width="50" className="" alt="logo"></img>
           <img src={discord} width="50" className="" alt="logo"></img>
         </div>
-        <ConnectButton>Mint Now</ConnectButton>
+        <div className="hidden">
+          <ConnectButton id="click-this">Mint Now</ConnectButton>
+        </div>
+        <button
+          className="primary-font custom-gradient py-2 px-6 m-2 rounded-full"
+          onClick={clickMint}
+        >
+          Mint Now
+        </button>
         <img src={chairImage} className="w-full" alt="logo"></img>
       </section>
 
@@ -141,7 +164,7 @@ const LandingPage = () => {
 
         {/* Show Case Slider */}
 
-        <div className="lg:w-3/4 w-10/12 flex overflow-x-auto">
+        <div className="lg:w-3/4 w-10/12 flex overflow-x-auto scroll-to-right">
           <div className="w-1/4 flex flex-col flex-none">
             <img src={spud1} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud2} className="lg:p-4 p-2" alt="logo"></img>
