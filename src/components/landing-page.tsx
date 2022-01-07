@@ -32,7 +32,11 @@ const LandingPage = () => {
 
   useEffect(() => {
     window.onscroll = () => {
-      // console.log(window.pageYOffset);
+      const element = document.getElementById("nav-container");
+      if (element != null) {
+        const factor = window.pageYOffset / 500;
+        element.style.backgroundImage = `linear-gradient(to right, rgba(81, 53, 124, ${factor}), rgba(8, 46, 135, ${factor}))`;
+      }
     };
   }, []);
 
@@ -77,6 +81,7 @@ const LandingPage = () => {
 
       <nav
         // ref={navContainer}
+        id="nav-container"
         role="navigation"
         className="w-full flex justify-center items-center bg-indigo-900 text-white primary-font fixed top-0"
       >
