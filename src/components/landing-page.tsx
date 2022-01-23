@@ -5,6 +5,9 @@ import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
 import Accordian from "./accordian";
 import CountdownTimer from "./countdown";
 
+import Swal from 'sweetalert2'
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 // Importing images
 import chairImage from "../assets/chair.png";
 import concertImage from "../assets/concert.jpeg";
@@ -37,6 +40,7 @@ import { getFirestore } from "firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import Countdown from "react-countdown";
 import { setInterval } from "timers";
+import CircularProgressWithLabel from "./countdown";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -131,6 +135,12 @@ const LandingPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [sec, setSec] = useState(0);
+  const [whitelistLoading, setWhitelistLoading] = useState(false);
+
   const [faqs] = useState([
     {
       question: "What are the Snuggly Spuds? ",
@@ -162,12 +172,6 @@ const LandingPage = () => {
     },
   ]);
 
-  const [mintDate] = useState(1643517900000);
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [sec, setSec] = useState(0);
-
   useEffect(() => {
     window.onscroll = () => {
       const element = document.getElementById("nav-container");
@@ -178,7 +182,8 @@ const LandingPage = () => {
     };
 
     setInterval(() => {
-      const timeLeft = mintDate - Date.now();
+      const startDateSeed = parseInt(process.env.REACT_APP_CANDY_START_DATE!, 10);
+      const timeLeft = startDateSeed - Date.now();
 
       const days = Math.floor(timeLeft / (24 * 60 * 60 * 1000));
       const daysms = timeLeft % (24 * 60 * 60 * 1000);
@@ -215,8 +220,7 @@ const LandingPage = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    console.log(name, email, walletAddress);
+    setWhitelistLoading(true);
 
     addDoc(collection(db, "whitelist"), {
       "name": name,
@@ -225,6 +229,24 @@ const LandingPage = () => {
     })
       .then(() => {
         console.log("Whitelist entry added successfully")
+        setWhitelistLoading(false);
+        Swal.fire({
+          title: "Congratulations!",
+          html: "You are successfully placed on the whitelist!",
+          background: "#433a8b",
+          icon: "success",
+          color: "white"
+        })
+      })
+      .catch(() => {
+        setWhitelistLoading(false);
+        Swal.fire({
+          title: "Ops!",
+          html: "Something went wrong and we weren't able to add you to the whitelist. Check your internet connection and try again!",
+          background: "#433a8b",
+          icon: "error",
+          color: "white"
+        })
       })
   }
 
@@ -372,7 +394,7 @@ const LandingPage = () => {
                 onChange={(e) => setWalletAddress(e.target.value)}
               />
             </div>
-            <button className="card-bg p-4 primary-font" type="submit">Submit</button>
+            <button className="card-bg p-4 primary-font" type="submit">{whitelistLoading ? <CircularProgress /> : "Submit"}</button>
           </form>
         </div>
       </section>
@@ -418,7 +440,7 @@ const LandingPage = () => {
 
       <section id="zombie" className="w-full flex justify-center mt-32">
         <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <div className="flex flex-col lg:items-start items-center lg:w-1/2 w-10/12">
+          <div className="flex flex-col lg:items-start items-center lg:w-3/5 w-10/12">
             <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
               ZOMBIE – Phase 2
             </div>
@@ -449,7 +471,7 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <img src={spud2} className="m-4 lg:w-1/2 w-full" alt="logo"></img>
+          <img src={spud2} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
         </div>
       </section>
 
@@ -457,8 +479,8 @@ const LandingPage = () => {
 
       <section id="comic" className="w-full flex justify-center mt-32">
         <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <img src={spud1} className="m-4 w-1/2" alt="logo"></img>
-          <div className="flex flex-col items-start lg:w-1/2 w-10/12 ">
+          <img src={spud1} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
+          <div className="flex flex-col items-start lg:w-3/5 w-10/12 ">
             <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
               COMIC BOOK SERIES – Phase 3
             </div>
