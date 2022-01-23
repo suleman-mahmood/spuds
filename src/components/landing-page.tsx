@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import { WalletDialogButton } from "@solana/wallet-adapter-material-ui";
+import Accordian from "./accordian";
+import CountdownTimer from "./countdown";
 
 // Importing images
 import chairImage from "../assets/chair.png";
@@ -29,11 +31,35 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import Countdown from "react-countdown";
+import { setInterval } from "timers";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBJCxxf2RLsK6wZMMztG52_APOnR37eqHw",
+  authDomain: "spuds-596b7.firebaseapp.com",
+  projectId: "spuds-596b7",
+  storageBucket: "spuds-596b7.appspot.com",
+  messagingSenderId: "302538585848",
+  appId: "1:302538585848:web:b0dd856724807e69e7ad0d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
 const ConnectButton = styled(WalletDialogButton)``;
 
 const BasicMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -101,6 +127,47 @@ const BasicMenu = () => {
 };
 
 const LandingPage = () => {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [walletAddress, setWalletAddress] = useState("");
+  const [faqs] = useState([
+    {
+      question: "What are the Snuggly Spuds? ",
+      answer: "The Snuggly Spuds are an NFT collection that will be making its investors part-owners by launching a comic book series and merchandise store soon.",
+    },
+    {
+      question: "What does part ownership mean?",
+      answer: "As a holder you will be disbursed profits from the sale of merchandise and the comic book series.",
+    },
+    {
+      question: "How will the online store become a success?",
+      answer: "With collaboration from top celebrities and an army of 9999 spud owners we'll quickly become a well known brand.",
+    },
+    {
+      question: "How do I mint a Snuggly Spud?",
+      answer: "TBD",
+    },
+    {
+      question: "When will I be able to mint a Snuggly Spud?",
+      answer: "TBD",
+    },
+    {
+      question: "What happens after I mint a Snuggly Spud?",
+      answer: "Snuggly Spuds will be integrated into secondary markets such as Solanart and Magiceden. You could either sell at a higher price to profit or hold on to keep receiving profits from the store.",
+    },
+    {
+      question: "What does the Spud Club represent?",
+      answer: "The Spud Club is our discord channel where our community hangs out, has gaming competition and meetings to discusses the long term aims of the projects.",
+    },
+  ]);
+
+  const [mintDate] = useState(1643517900000);
+  const [days, setDays] = useState(0);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [sec, setSec] = useState(0);
+
   useEffect(() => {
     window.onscroll = () => {
       const element = document.getElementById("nav-container");
@@ -109,6 +176,24 @@ const LandingPage = () => {
         element.style.backgroundImage = `linear-gradient(to right, rgba(81, 53, 124, ${factor}), rgba(8, 46, 135, ${factor}))`;
       }
     };
+
+    setInterval(() => {
+      const timeLeft = mintDate - Date.now();
+
+      const days = Math.floor(timeLeft / (24 * 60 * 60 * 1000));
+      const daysms = timeLeft % (24 * 60 * 60 * 1000);
+      const hours = Math.floor(daysms / (60 * 60 * 1000));
+      const hoursms = timeLeft % (60 * 60 * 1000);
+      const minutes = Math.floor(hoursms / (60 * 1000));
+      const minutesms = timeLeft % (60 * 1000);
+      const sec = Math.floor(minutesms / 1000);
+
+      setDays(days);
+      setHours(hours);
+      setMinutes(minutes);
+      setSec(sec);
+    }, 1000)
+
   }, []);
 
   const clickMint = () => {
@@ -127,6 +212,21 @@ const LandingPage = () => {
       }
     });
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    console.log(name, email, walletAddress);
+
+    addDoc(collection(db, "whitelist"), {
+      "name": name,
+      "email": email,
+      "walletAddress": walletAddress
+    })
+      .then(() => {
+        console.log("Whitelist entry added successfully")
+      })
+  }
 
   return (
     <>
@@ -225,6 +325,56 @@ const LandingPage = () => {
           Mint Now
         </button>
         <img src={chairImage} className="w-full" alt="logo"></img>
+      </section>
+
+      {/* White Listing */}
+
+      <section className="flex flex-col items-center justify-center mt-16">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          WhiteList Now
+        </div>
+
+        <div className="w-10/12 lg:w-6/12 px-4 m-2">
+          <form onSubmit={handleSubmit}>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Email Address
+              </label>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Wallet Address
+              </label>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setWalletAddress(e.target.value)}
+              />
+            </div>
+            <button className="card-bg p-4 primary-font" type="submit">Submit</button>
+          </form>
+        </div>
       </section>
 
       {/* Show Case */}
@@ -375,8 +525,22 @@ const LandingPage = () => {
       {/* Countdown */}
 
       <section id="countdown" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-12">
           Countdown
+        </div>
+        <div className="flex justify-center items-center flex-wrap w-full">
+          <div className="m-4">
+            <CountdownTimer value={days} postfix="days" upperBound={30}></CountdownTimer>
+          </div>
+          <div className="m-4">
+            <CountdownTimer value={hours} postfix="hours" upperBound={24}></CountdownTimer>
+          </div>
+          <div className="m-4">
+            <CountdownTimer value={minutes} postfix="mins" upperBound={60}></CountdownTimer>
+          </div>
+          <div className="m-4">
+            <CountdownTimer value={sec} postfix="seconds" upperBound={60}></CountdownTimer>
+          </div>
         </div>
       </section>
 
@@ -389,38 +553,14 @@ const LandingPage = () => {
 
         <div className="flex justify-center w-full">
           <div className="flex flex-wrap text-center lg:w-3/4 w-10/12 justify-center">
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
-            <div className="bg-blue-800 p-4 m-2 lg:w-2/5 flex justify-between items-center">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit?</p>
-              <img src={dropdown}></img>
-            </div>
+
+            {faqs.map(qna => {
+              return (
+                <div className="m-2 lg:w-2/5 w-full flex justify-between items-center">
+                  <Accordian question={qna.question} answer={qna.answer} ></Accordian>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
