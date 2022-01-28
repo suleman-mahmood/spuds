@@ -106,6 +106,11 @@ const BasicMenu = () => {
         }}
       >
         <MenuItem onClick={handleClose}>
+          <a href="#whitelist" className="p-4">
+            Whitelist
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <a href="#showcase" className="p-4">
             Showcase
           </a>
@@ -135,6 +140,7 @@ const LandingPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [walletAddress, setWalletAddress] = useState("");
+  const [discordUsername, setDiscordUsername] = useState("");
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -225,7 +231,8 @@ const LandingPage = () => {
     addDoc(collection(db, "whitelist"), {
       "name": name,
       "email": email,
-      "walletAddress": walletAddress
+      "walletAddress": walletAddress,
+      "discordUsername": discordUsername,
     })
       .then(() => {
         console.log("Whitelist entry added successfully")
@@ -284,24 +291,11 @@ const LandingPage = () => {
             LOGO
           </a>
         </div>
-
-        {/* <div className="px-4 cursor-pointer md:hidden">
-          <svg
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </div> */}
         <BasicMenu></BasicMenu>
         <div className="hidden md:block">
+          <a href="#whitelist" className="p-4">
+            Whitelist
+          </a>
           <a href="#showcase" className="p-4">
             Showcase
           </a>
@@ -320,8 +314,14 @@ const LandingPage = () => {
       {/* Spuds NFT Collection */}
 
       <section className="flex flex-col items-center mt-16">
-        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
-          Spuds NFT Collection
+        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
+          SNUGGLY SPUDS NFT COLLECTION
+        </div>
+        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
+          9999 spuds just snuggled their way in the Solana metaverse,
+        </div>
+        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
+          Mint Now to Join the SPUD CLUB
         </div>
         <p className="mt-4 lg:w-3/5 w-4/5 text-center">
           Join the Spud Club to build the 1st community driven comic book series
@@ -351,10 +351,15 @@ const LandingPage = () => {
 
       {/* White Listing */}
 
-      <section className="flex flex-col items-center justify-center mt-16">
+      <section id="whitelist" className="flex flex-col items-center justify-center mt-16">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
-          WhiteList Now
+          Whitelist Now
         </div>
+
+        <p className="mt-4 lg:w-3/5 w-4/5 text-center">
+          Limited Pre Sale Spots available at a discounted price before the Public Sale <br />
+          Fill the form below and join our discord server to complete the process <br />
+        </p>
 
         <div className="w-10/12 lg:w-6/12 px-4 m-2">
           <form onSubmit={handleSubmit}>
@@ -388,14 +393,117 @@ const LandingPage = () => {
               >
                 Wallet Address
               </label>
+              <a href="https://www.youtube.com/watch?v=N9ns13g2S_8" className="w-full mb-3">
+                How to know your wallet address?
+              </a>
               <input
                 type="text"
                 className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 onChange={(e) => setWalletAddress(e.target.value)}
               />
             </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                DISCORD USERNAME
+              </label>
+              <a href="https://discord.com" className="w-full mb-3">
+                Discord link
+              </a>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setDiscordUsername(e.target.value)}
+              />
+            </div>
             <button className="card-bg p-4 primary-font" type="submit">{whitelistLoading ? <CircularProgress /> : "Submit"}</button>
           </form>
+        </div>
+      </section>
+
+      {/* Zombie */}
+
+      <section id="zombie" className="w-full flex justify-center mt-32">
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
+          <div className="flex flex-col lg:items-start items-center lg:w-3/5 w-10/12">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+              ZOMBIE SPUD GENESIS – Phase 2
+            </div>
+
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+              AIRDROPPED TO INITIAL MINTERS ONLY
+            </div>
+
+            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
+              <img src={spud1} className="h-20 m-4" alt="logo"></img>
+              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
+                <h2 className="primary-font">Zombie Spuds</h2>
+                <p>
+                  How could it be? Have our little companions evolved into Zombies and turned against us? Or was it us who were against them all along? Has pollution made the Earth’s atmosphere too toxic for the Snuggly Spuds?
+                </p>
+              </div>
+            </div>
+
+            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
+              <img src={spud2} className="h-20 m-4" alt="logo"></img>
+              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
+                <h2 className="primary-font">Snuggly Spuds</h2>
+                <p>
+                  Bring the joy and cuteness back to the super spuds by minting. $25,000 will go to a charity of your choice that is helping eradicate pollution and increasing sustainable practices to tackle the climate crisis. All decisions will be a made as a community, each proud spud holder will be voting in a poll to decide which organization the Snuggly Spuds will be donating to. We truly want to build a community that’s engaged and decides the plan of action. Feel free to join our Discord to make your voice heard, Everyone’s welcome in the SNUGGLY SPUD CLUB!
+                </p>
+              </div>
+            </div>
+          </div>
+          <img src={spud2} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
+        </div>
+      </section>
+
+      {/* Comic Book */}
+
+      <section id="comic" className="w-full flex justify-center mt-32">
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
+          <img src={spud1} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
+          <div className="flex flex-col items-start lg:w-3/5 w-10/12 ">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+              HOLD TO EARN (PART OWNERSHIP) - Phase 3
+            </div>
+            <p className="m-4">
+              With an army of 9999 Snuggly Spud owners to promote the brand it’s time to bring the spuds into physical existence as well. Help us build a truly community driven NFT comic book series and a Global Merchandise Store. The best part is each spud holder will be disbursed monthly royalties of 20% on Total Sales directly in their crypto wallet!
+            </p>
+            <p className="m-4">
+              Headphones, Merchandise, Toys, Collectibles will be coming soon through a global merchandise store. Strategic partnerships with online and retail stores in the US, UK, JAPAN and EU are underway! <b> It literally pays to hold on to your little companion!</b>
+            </p>
+            <p className="m-4">
+              Spud Holders will have a say in the character development of their Unique Spud playing a part in the storyline of the Comic Book Series. Our Artists will be hosting monthly townhall meetings to discuss the progress of the series and take feedback from our community!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* COMMUNITY ENGAGEMENT */}
+
+      <section id="community" className="w-full flex justify-center mt-32">
+        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
+          <div className="flex flex-col items-start  w-10/12 lg:text-left text-center lg:items-start items-center">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+              COMMUNITY ENGAGEMENT & GIVEAWAYS
+            </div>
+            <p className="m-4">
+              To promote the worlds transition to sustainable energy a Tesla Model 3 to be given away to 1 Lucky Spud Holder. Apart from this, a raffle will be hosted for 5 lucky club members to win a paid trip to Lac Rose (Senegal), Sardinia (Italy) or Dorset (UK) to raise awareness for climate control as these beautiful wonders of the world are at risk due to climate control.
+            </p>
+            <p className="m-4">
+              5 lucky members will be given tickets to their favorites artist’s concerts. Coldplay? The Weeknd? BTS? You decide which artist you want to see preform live!
+            </p>
+            <p className="m-4">
+              We will regularly host gaming events, DJ sets, twitch streams and Townhall meetings to discuss the progress and the overall aim of the community!
+            </p>
+          </div>
+          <img
+            src={concertImage}
+            className="m-4 lg:w-1/2 w-10/12"
+            alt="logo"
+          ></img>
         </div>
       </section>
 
@@ -433,100 +541,6 @@ const LandingPage = () => {
             <img src={spud11} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud12} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-        </div>
-      </section>
-
-      {/* Zombie */}
-
-      <section id="zombie" className="w-full flex justify-center mt-32">
-        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <div className="flex flex-col lg:items-start items-center lg:w-3/5 w-10/12">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
-              ZOMBIE – Phase 2
-            </div>
-
-            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
-              <img src={zombieHand} className="h-20 m-4" alt="logo"></img>
-              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
-                <h2 className="primary-font">Title</h2>
-                <p>
-                  How could it be? Have our little companions have turned
-                  against us? Or was it us who were against them all along? Has
-                  mankind made Earth’s atmosphere too toxic for the spuds to
-                  survive.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex lg:flex-row flex-col lg:items-start items-center mb-4">
-              <img src={nftLogo} className="h-20 m-4" alt="logo"></img>
-              <div className="flex flex-col lg:items-start items-center lg:text-left text-center">
-                <h2 className="primary-font">Title</h2>
-                <p>
-                  Bring the joy and cuteness back to the super spuds by minting.
-                  10% of revenue from mint and royalties go to a charity of your
-                  choice that is helping eradicate pollution and increasing
-                  sustainable practices to tackle the climate crises.
-                </p>
-              </div>
-            </div>
-          </div>
-          <img src={spud2} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
-        </div>
-      </section>
-
-      {/* Comic Book */}
-
-      <section id="comic" className="w-full flex justify-center mt-32">
-        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <img src={spud1} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
-          <div className="flex flex-col items-start lg:w-3/5 w-10/12 ">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
-              COMIC BOOK SERIES – Phase 3
-            </div>
-            <p className="m-4">
-              Its time to bring the spuds into physical existence as well. Help
-              us build the first community driven NFT comic book series.
-            </p>
-            <p className="m-4">
-              Merch and strategic partnerships with retail stores coming soon!
-              NFT holders will be disbursed royalties on sales!
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* COMMUNITY ENGAGEMENT */}
-
-      <section id="community" className="w-full flex justify-center mt-32">
-        <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <div className="flex flex-col items-start  w-10/12 lg:text-left text-center lg:items-start items-center">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
-              COMMUNITY ENGAGEMENT
-            </div>
-            <p className="m-4">
-              A raffle will be hosted for 10 lucky club members to win a paid
-              trip to Lac Rose (Senegal), Sardinia (Italy) and Dorset (UK) to
-              raise awareness for climate control. These beautiful wonders of
-              the world are at risk due to climate control. The Super Spuds will
-              be donating funds to an organization decided by the club members
-              to battle the climate crisis.
-            </p>
-            <p className="m-4">
-              10 lucky members will be given tickets to their favorites artist’s
-              concerts. Coldplay? The Weeknd? BTS? You decide which artist you
-              want to see preform live!
-            </p>
-            <p className="m-4">
-              We will host weekly gaming events and Townhall meetings to discuss
-              the progress and the overall aim of the community!
-            </p>
-          </div>
-          <img
-            src={concertImage}
-            className="m-4 lg:w-1/2 w-10/12"
-            alt="logo"
-          ></img>
         </div>
       </section>
 
