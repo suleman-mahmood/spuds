@@ -317,13 +317,13 @@ const LandingPage = () => {
         <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
           SNUGGLY SPUDS NFT COLLECTION
         </div>
-        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
+        <div className="p-4 mb-2 lg:text-2xl text-xl primary-font">
           9999 spuds just snuggled their way in the Solana metaverse,
         </div>
-        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
+        <div className="p-4 mb-2 lg:text-2xl text-xl primary-font">
           Mint Now to Join the SPUD CLUB
         </div>
-        <p className="mt-4 lg:w-3/5 w-4/5 text-center">
+        {/* <p className="mt-4 lg:w-3/5 w-4/5 text-center">
           Join the Spud Club to build the 1st community driven comic book series
           based nfts <br /> Win paid trips to the wonders of the world that are
           at risk due to climate change <br />{" "}
@@ -332,7 +332,10 @@ const LandingPage = () => {
           much more! <br /> Embrace your Little Companion in GEN-1 and witness
           all hell break loose in ZOMBIE GEN-2. <br />{" "}
           <b> GET 2 NFTS PER MINT </b>
-        </p>
+        </p> */}
+        {/* <p className="mt-4 lg:w-3/5 w-4/5 text-center">
+          Embrace your Little Companion in GEN-1 and witness all hell break loose in ZOMBIE GEN-2.
+        </p> */}
         <div className="flex mb-4">
           <img src={twitter} width="50" className="" alt="logo"></img>
           <img src={discord} width="50" className="" alt="logo"></img>
@@ -346,80 +349,10 @@ const LandingPage = () => {
         >
           Mint Now
         </button>
+        <a href="#" className="mt-4 lg:w-3/5 w-4/5 text-center">
+          <u>How to Mint?</u>
+        </a>
         <img src={chairImage} className="w-full" alt="logo"></img>
-      </section>
-
-      {/* White Listing */}
-
-      <section id="whitelist" className="flex flex-col items-center justify-center mt-16">
-        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
-          Whitelist Now
-        </div>
-
-        <p className="mt-4 lg:w-3/5 w-4/5 text-center">
-          Limited Pre Sale Spots available at a discounted price before the Public Sale <br />
-          Fill the form below and join our discord server to complete the process <br />
-        </p>
-
-        <div className="w-10/12 lg:w-6/12 px-4 m-2">
-          <form onSubmit={handleSubmit}>
-            <div className="relative w-full mb-3">
-              <label
-                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Full Name
-              </label>
-              <input
-                type="text"
-                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div className="relative w-full mb-3">
-              <label
-                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Email Address
-              </label>
-              <input
-                type="text"
-                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div className="relative w-full mb-3">
-              <label
-                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Wallet Address
-              </label>
-              <a href="https://www.youtube.com/watch?v=N9ns13g2S_8" className="w-full mb-3">
-                How to know your wallet address?
-              </a>
-              <input
-                type="text"
-                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                onChange={(e) => setWalletAddress(e.target.value)}
-              />
-            </div>
-            <div className="relative w-full mb-3">
-              <label
-                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                DISCORD USERNAME
-              </label>
-              <a href="https://discord.com" className="w-full mb-3">
-                Discord link
-              </a>
-              <input
-                type="text"
-                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                onChange={(e) => setDiscordUsername(e.target.value)}
-              />
-            </div>
-            <button className="card-bg p-4 primary-font" type="submit">{whitelistLoading ? <CircularProgress /> : "Submit"}</button>
-          </form>
-        </div>
       </section>
 
       {/* Zombie */}
@@ -431,7 +364,7 @@ const LandingPage = () => {
               ZOMBIE SPUD GENESIS – Phase 2
             </div>
 
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+            <div className="p-4 m-2 lg:text-2xl text-xl primary-font">
               AIRDROPPED TO INITIAL MINTERS ONLY
             </div>
 
@@ -507,6 +440,80 @@ const LandingPage = () => {
         </div>
       </section>
 
+
+      {/* White Listing */}
+
+      <section id="whitelist" className="flex flex-col items-center justify-center mt-16">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+          Whitelist Now
+        </div>
+
+        <p className="mt-4 lg:w-3/5 w-4/5 text-center">
+          Limited Pre Sale Spots available at a discounted price before the Public Sale <br />
+          Fill the form below and join our discord server to complete the process <br />
+        </p>
+
+        <div className="w-10/12 lg:w-6/12 px-4 m-2">
+          <form onSubmit={handleSubmit}>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Full Name
+              </label>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Email Address
+              </label>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                Wallet Address
+              </label>
+              <a href="https://www.youtube.com/watch?v=N9ns13g2S_8" className="w-full mb-3">
+                How to know your wallet address?
+              </a>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setWalletAddress(e.target.value)}
+              />
+            </div>
+            <div className="relative w-full mb-3">
+              <label
+                className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              >
+                DISCORD USERNAME
+              </label>
+              <a href="https://discord.com" className="w-full mb-3">
+                Discord link
+              </a>
+              <input
+                type="text"
+                className="border-0 px-3 py-3 custom-gradient rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                onChange={(e) => setDiscordUsername(e.target.value)}
+              />
+            </div>
+            <button className="card-bg p-4 primary-font" type="submit">{whitelistLoading ? <CircularProgress /> : "Submit"}</button>
+          </form>
+        </div>
+      </section>
+
       {/* Show Case */}
 
       <section id="showcase" className="flex flex-col items-center mt-32">
@@ -579,6 +586,8 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* How to Mint? */}
 
       {/* FAQs */}
 
