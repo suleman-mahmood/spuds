@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -26,9 +27,7 @@ import spud11 from "../assets/spud-11.jpeg";
 import spud12 from "../assets/spud-12.jpeg";
 import twitter from "../assets/twitter.png";
 import discord from "../assets/discord.png";
-import zombieHand from "../assets/zombie-hand.png";
-import nftLogo from "../assets/nft-logo.png";
-import dropdown from "../assets/dropdown.png";
+import zombieGif from "../assets/Zombie.gif";
 
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
@@ -263,13 +262,10 @@ const LandingPage = () => {
       TODO List:
 
         - Do something about roadmap
-        - Finish Countdown
 
         Blocking:
-        - Insert correct zombie gif
         - Comic book video
         - Replace logo with the spuds logo
-        - Insert real FAQs
         - Button background Image (Fix styling on buttons)
       */}
 
@@ -284,28 +280,28 @@ const LandingPage = () => {
           <img
             src="https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables-25/85/potatoes_potato_vegetable_food-256.png"
             width="50"
-            className="mx-4"
+            className="mx-4 my-2"
             alt="logo"
           ></img>
-          <a href="#" className="">
-            LOGO
+          <a href="#" className="text-xl md:text-lg my-2">
+            SPUDS
           </a>
         </div>
         <BasicMenu></BasicMenu>
-        <div className="hidden md:block">
-          <a href="#whitelist" className="p-4">
+        <div className="hidden md:block my-2">
+          <a href="#whitelist" className="md:text-base lg:text-xl p-4">
             Whitelist
           </a>
-          <a href="#showcase" className="p-4">
+          <a href="#showcase" className="md:text-base lg:text-xl p-4">
             Showcase
           </a>
-          <a href="#comic" className="p-4">
+          <a href="#comic" className="md:text-base lg:text-xl p-4">
             Comic Book
           </a>
-          <a href="#roadmap" className="p-4">
+          <a href="#roadmap" className="md:text-base lg:text-xl p-4">
             Roadmap
           </a>
-          <a href="#faqs" className="p-4">
+          <a href="#faqs" className="md:text-base lg:text-xl p-4">
             FAQs
           </a>
         </div>
@@ -313,58 +309,69 @@ const LandingPage = () => {
 
       {/* Spuds NFT Collection */}
 
-      <section className="flex flex-col items-center mt-16">
-        <div className="p-4 mb-4 card-bg lg:text-4xl text-xl primary-font">
-          SNUGGLY SPUDS NFT COLLECTION
+      <section className="w-full flex justify-center mt-24">
+        <div className="w-10/12 flex flex-col items-center text-center">
+          <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+            SNUGGLY SPUDS NFT COLLECTION
+          </div>
+          <div className="mt-4 lg:text-2xl text-xl primary-font">
+            9999 spuds just snuggled their way in the Solana metaverse,
+          </div>
+          <div className="mt-4 lg:text-2xl text-xl primary-font">
+            Mint Now to Join the SPUD CLUB
+          </div>
+
+          {/* 3 Cards section */}
+
+          <div className="flex lg:flex-row flex-col lg:items-start w-10/12 primary-font lg:text-2xl text-xl text-center">
+            <div className="m-4 p-6 rounded-xl bg-pink-700">
+              Receive Royalties from the 1st community built Global Merch Store and Comic Book Series
+            </div>
+            <div className="m-4 p-6 rounded-xl bg-purple-700">
+              Win a Tesla Model 3, Paid Trips, Concert Tickets and much more
+            </div>
+            <div className="m-4 p-6 rounded-xl bg-indigo-600">
+              Receive a limited-edition Zombie Spud (Airdropped to Initial Minters)
+            </div>
+          </div>
+
+          {/* Mint Button */}
+          <div className="hidden">
+            <ConnectButton id="click-this">Mint Now</ConnectButton>
+          </div>
+          <button
+            className="primary-font custom-gradient py-2 px-6 m-2 rounded-full"
+            onClick={clickMint}
+          >
+            Mint Now
+          </button>
+
+          {/* Twitter discord icons */}
+          <div className="flex mb-4">
+            <img src={twitter} width="50" className="" alt="logo"></img>
+            <img src={discord} width="50" className="" alt="logo"></img>
+          </div>
+
+          <a href="#" className="mt-4 lg:w-3/5 w-4/5 text-center">
+            <u>How to Mint?</u>
+          </a>
         </div>
-        <div className="p-4 mb-2 lg:text-2xl text-xl primary-font">
-          9999 spuds just snuggled their way in the Solana metaverse,
-        </div>
-        <div className="p-4 mb-2 lg:text-2xl text-xl primary-font">
-          Mint Now to Join the SPUD CLUB
-        </div>
-        {/* <p className="mt-4 lg:w-3/5 w-4/5 text-center">
-          Join the Spud Club to build the 1st community driven comic book series
-          based nfts <br /> Win paid trips to the wonders of the world that are
-          at risk due to climate change <br />{" "}
-          <u>Locations include Italy, Senegal and the UK</u> <br /> Win 20,000
-          USD in Lucky draws, Concert tickets by your favorite artists and much
-          much more! <br /> Embrace your Little Companion in GEN-1 and witness
-          all hell break loose in ZOMBIE GEN-2. <br />{" "}
-          <b> GET 2 NFTS PER MINT </b>
-        </p> */}
-        {/* <p className="mt-4 lg:w-3/5 w-4/5 text-center">
-          Embrace your Little Companion in GEN-1 and witness all hell break loose in ZOMBIE GEN-2.
-        </p> */}
-        <div className="flex mb-4">
-          <img src={twitter} width="50" className="" alt="logo"></img>
-          <img src={discord} width="50" className="" alt="logo"></img>
-        </div>
-        <div className="hidden">
-          <ConnectButton id="click-this">Mint Now</ConnectButton>
-        </div>
-        <button
-          className="primary-font custom-gradient py-2 px-6 m-2 rounded-full"
-          onClick={clickMint}
-        >
-          Mint Now
-        </button>
-        <a href="#" className="mt-4 lg:w-3/5 w-4/5 text-center">
-          <u>How to Mint?</u>
-        </a>
-        <img src={chairImage} className="w-full" alt="logo"></img>
       </section>
+
+      <img src={chairImage} className="w-full mt-8" alt="logo"></img>
 
       {/* Zombie */}
 
-      <section id="zombie" className="w-full flex justify-center mt-32">
+      <section id="zombie" className="w-full flex justify-center mt-20 lg:mt-32">
         <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
           <div className="flex flex-col lg:items-start items-center lg:w-3/5 w-10/12">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font text-center">
               ZOMBIE SPUD GENESIS – Phase 2
             </div>
 
-            <div className="p-4 m-2 lg:text-2xl text-xl primary-font">
+            <img src={zombieGif} className="block lg:hidden m-4" alt="logo"></img>
+
+            <div className="p-4 m-2 lg:text-2xl text-xl primary-font lg:text-left text-center">
               AIRDROPPED TO INITIAL MINTERS ONLY
             </div>
 
@@ -388,26 +395,39 @@ const LandingPage = () => {
               </div>
             </div>
           </div>
-          <img src={spud2} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
+          <img src={zombieGif} className="hidden lg:block m-4 lg:w-2/5 w-10/12" alt="logo"></img>
         </div>
       </section>
 
       {/* Comic Book */}
 
-      <section id="comic" className="w-full flex justify-center mt-32">
+      <section id="comic" className="w-full flex justify-center mt-20 lg:mt-32">
         <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
-          <img src={spud1} className="m-4 lg:w-2/5 w-10/12" alt="logo"></img>
-          <div className="flex flex-col items-start lg:w-3/5 w-10/12 ">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+
+          <img
+            src={spud1}
+            className="hidden lg:block m-4 lg:w-2/5 w-10/12"
+            alt="logo"
+          ></img>
+
+          <div className="flex flex-col items-start  w-10/12 lg:text-left text-center lg:items-start items-center">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font text-center">
               HOLD TO EARN (PART OWNERSHIP) - Phase 3
             </div>
-            <p className="m-4">
+
+            <img
+              src={spud1}
+              className="block lg:hidden m-4"
+              alt="logo"
+            ></img>
+
+            <p className="m-4 text-center lg:text-left">
               With an army of 9999 Snuggly Spud owners to promote the brand it’s time to bring the spuds into physical existence as well. Help us build a truly community driven NFT comic book series and a Global Merchandise Store. The best part is each spud holder will be disbursed monthly royalties of 20% on Total Sales directly in their crypto wallet!
             </p>
-            <p className="m-4">
+            <p className="m-4 text-center lg:text-left">
               Headphones, Merchandise, Toys, Collectibles will be coming soon through a global merchandise store. Strategic partnerships with online and retail stores in the US, UK, JAPAN and EU are underway! <b> It literally pays to hold on to your little companion!</b>
             </p>
-            <p className="m-4">
+            <p className="m-4 text-center lg:text-left">
               Spud Holders will have a say in the character development of their Unique Spud playing a part in the storyline of the Comic Book Series. Our Artists will be hosting monthly townhall meetings to discuss the progress of the series and take feedback from our community!
             </p>
           </div>
@@ -416,12 +436,19 @@ const LandingPage = () => {
 
       {/* COMMUNITY ENGAGEMENT */}
 
-      <section id="community" className="w-full flex justify-center mt-32">
+      <section id="community" className="w-full flex justify-center mt-20 lg:mt-32">
         <div className="flex lg:w-3/4 w-10/12 lg:flex-row flex-col items-center">
           <div className="flex flex-col items-start  w-10/12 lg:text-left text-center lg:items-start items-center">
-            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font">
+            <div className="p-4 m-4 card-bg lg:text-4xl text-xl primary-font text-center">
               COMMUNITY ENGAGEMENT & GIVEAWAYS
             </div>
+
+            <img
+              src={concertImage}
+              className="block lg:hidden m-4"
+              alt="logo"
+            ></img>
+
             <p className="m-4">
               To promote the worlds transition to sustainable energy a Tesla Model 3 to be given away to 1 Lucky Spud Holder. Apart from this, a raffle will be hosted for 5 lucky club members to win a paid trip to Lac Rose (Senegal), Sardinia (Italy) or Dorset (UK) to raise awareness for climate control as these beautiful wonders of the world are at risk due to climate control.
             </p>
@@ -434,7 +461,7 @@ const LandingPage = () => {
           </div>
           <img
             src={concertImage}
-            className="m-4 lg:w-1/2 w-10/12"
+            className="hidden lg:block m-4 lg:w-1/2 w-10/12"
             alt="logo"
           ></img>
         </div>
@@ -443,7 +470,7 @@ const LandingPage = () => {
 
       {/* White Listing */}
 
-      <section id="whitelist" className="flex flex-col items-center justify-center mt-16">
+      <section id="whitelist" className="flex flex-col items-center justify-center mt-20 lg:mt-32">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
           Whitelist Now
         </div>
@@ -516,35 +543,35 @@ const LandingPage = () => {
 
       {/* Show Case */}
 
-      <section id="showcase" className="flex flex-col items-center mt-32">
-        <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
+      <section id="showcase" className="flex flex-col items-center mt-20 lg:mt-32">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-4">
           Show Case
         </div>
 
         {/* Show Case Slider */}
 
         <div className="lg:w-3/4 w-10/12 flex overflow-x-auto scroll-to-right">
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud1} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud2} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud3} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud4} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud5} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud6} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud7} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud8} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud9} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud10} className="lg:p-4 p-2" alt="logo"></img>
           </div>
-          <div className="w-1/4 flex flex-col flex-none">
+          <div className="w-2/4 lg:w-1/4 flex flex-col flex-none">
             <img src={spud11} className="lg:p-4 p-2" alt="logo"></img>
             <img src={spud12} className="lg:p-4 p-2" alt="logo"></img>
           </div>
@@ -553,7 +580,7 @@ const LandingPage = () => {
 
       {/* Roadmap */}
 
-      <section id="roadmap" className="flex flex-col items-center mt-32">
+      <section id="roadmap" className="flex flex-col items-center mt-20 lg:mt-32">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font">
           Roadmap
         </div>
@@ -567,7 +594,7 @@ const LandingPage = () => {
 
       {/* Countdown */}
 
-      <section id="countdown" className="flex flex-col items-center mt-32">
+      <section id="countdown" className="flex flex-col items-center mt-20 lg:mt-32">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-12">
           Countdown
         </div>
@@ -589,9 +616,39 @@ const LandingPage = () => {
 
       {/* How to Mint? */}
 
+      <section className="flex flex-col items-center mt-20 lg:mt-32">
+        <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-12">
+          How to Mint?
+        </div>
+        <div className="flex flex-wrap w-10/12">
+          <div className="w-full lg:w-1/2">
+            <div className="m-4">
+              <iframe
+                src="https://www.youtube.com/embed/EQQ0UfygVxY"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+                className="w-full h-96"
+              ></iframe>
+            </div>
+          </div>
+          <div className="w-full lg:w-1/2">
+            <div className="m-4">
+              <iframe
+                src="https://www.youtube.com/embed/EQQ0UfygVxY"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen
+                className="w-full h-96"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQs */}
 
-      <section id="faqs" className="flex flex-col items-center mt-32">
+      <section id="faqs" className="flex flex-col items-center mt-20 lg:mt-32">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-8">
           Frequent Questions
         </div>
@@ -612,7 +669,7 @@ const LandingPage = () => {
 
       {/* Footer */}
 
-      <div className="flex lg:flex-row flex-col justify-center items-center mt-32 text-white primary-font">
+      <div className="flex lg:flex-row flex-col justify-center items-center text-white primary-font mt-20 lg:mt-32">
         <div className="flex lg:w-1/4 w-2/4 justify-center items-center">
           <img
             src="https://cdn2.iconfinder.com/data/icons/fruits-and-vegetables-25/85/potatoes_potato_vegetable_food-256.png"
