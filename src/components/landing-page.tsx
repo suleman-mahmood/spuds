@@ -125,6 +125,11 @@ const BasicMenu = () => {
           </a>
         </MenuItem>
         <MenuItem onClick={handleClose}>
+          <a href="#how-to-mint" className="p-4">
+            How to Mint?
+          </a>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
           <a href="#faqs" className="p-4">
             FAQs
           </a>
@@ -300,6 +305,9 @@ const LandingPage = () => {
           </a>
           <a href="#roadmap" className="md:text-base lg:text-xl p-4">
             Roadmap
+          </a>
+          <a href="#how-to-mint" className="md:text-base lg:text-xl p-4">
+            How to mint?
           </a>
           <a href="#faqs" className="md:text-base lg:text-xl p-4">
             FAQs
@@ -616,7 +624,7 @@ const LandingPage = () => {
 
       {/* How to Mint? */}
 
-      <section className="flex flex-col items-center mt-20 lg:mt-32">
+      <section id="how-to-mint" className="flex flex-col items-center mt-20 lg:mt-32">
         <div className="p-4 card-bg lg:text-4xl text-xl primary-font mb-12">
           How to Mint?
         </div>
